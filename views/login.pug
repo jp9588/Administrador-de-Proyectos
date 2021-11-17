@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        include partials/header
+    body.login 
+        .contenedor-formulario 
+            h1 Login 
+            //- if errores 
+            //-     each error in errores
+            //-         p.error.alerta=error.msg
+                 
+                
+
+            form#formulario.caja.caja-login(method='POST' action='/usuario/iniciar-sesion')
+                .campo 
+                    label(for="email") E-mail
+                    input(type="email" name="email" placeholder="Tu Email" autocomplete="off" required) 
+                .campo 
+                    label(for="password") Password
+                    input(type="password" name="password" placeholder="Tu Password" autocomplete="off" required) 
+                .campo.enviar 
+                    input.boton(type="submit" value="Iniciar Sesion")
+                .campo 
+                    a(href="/usuario/crear-nuevo") Si aun no estas registrado, crea un cuenta aqui !
+                    //- a(href="/usuario/restablecer-password") Olvidaste tu password, da click aqui!

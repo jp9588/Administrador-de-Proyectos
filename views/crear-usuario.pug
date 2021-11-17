@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        include partials/header
+    body.login 
+        .contenedor-formulario 
+            h1 Crea tu cuenta Aqui!!! 
+            if errores 
+                each error in errores
+                   if error 
+                        p
+                   else
+                        p.error.alerta=error.msg
+                 
+                
+
+            form#formulario.caja.caja-login(method='POST' action='/usuario/crear-nuevo')
+                .campo 
+                    label(for="email") E-mail
+                    input(type="email" name="email" placeholder="Tu Email" autocomplete="off" required) 
+                .campo 
+                    label(for="password") Password
+                    input(type="password" name="password" placeholder="Tu Password" autocomplete="off" required) 
+                .campo.enviar 
+                    input.boton(type="submit" value="Crear Cuenta")
+                .campo 
+                a(href="/usuario/iniciar-sesion") Volver a Iniciar Sesion 

@@ -1,0 +1,13 @@
+extends layout 
+
+include mixins/edicion-proyecto
+
+block contenido
+    .contenido-principal 
+        h1 #{nombrePagina}
+
+        if errores 
+            each error in errores
+                p.error.alerta=error.texto
+
+        +edicionProyecto(proyecto)

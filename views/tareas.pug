@@ -1,0 +1,49 @@
+extends layout 
+
+block contenido
+    .contenido-principal 
+        h1 #{nombrePagina}
+        h2 #{proyecto.nombre}
+
+        if errores 
+            each error in errores
+                .alerta=error.texto
+
+
+        form.agregar-tarea(action=`/proyectos/${proyecto.url}` method='POST')
+            .campo 
+                label(for='tarea') Tarea: 
+                input.nombre-tarea(type="text" name='tarea' placeholder='Nombre de la Nueva Tarea' autocomplete='off')
+            .campo.enviar 
+                input.boton.nueva-tarea(type='submit' value='Crear Tarea')
+
+        .listado-pendientes 
+            ul 
+              if tareas.length
+                each tarea in tareas 
+                    li.tarea 
+                        p=tarea.tarea 
+                         
+
+                        .acciones 
+                            if tarea.estado
+                                a(href=`/tarea/check/${tarea.dataValues.id}`) 
+                                     i.far.fa-check-circle.completo 
+                            else 
+                               a(href=`/tarea/check/${tarea.dataValues.id}`) 
+                                    i.fas.fa-times.incompleto    
+                            a(href=`/tarea/eliminar/${tarea.dataValues.id}`)
+                                i.fas.fa-trash
+              else 
+                p Aun no hay tareas en este proyecto. Agrega una o si no me utilizas BORRAME
+        .avance 
+            if (count/tareas.length)*100 === 100
+                h2 Felicidades !!! EL proyecto esta completo :)
+            else
+                h2 Avance del proyecto:   
+        .barra-avance 
+            .porcentaje(style={width:`${(count/tareas.length)*100}%`})
+
+        .contenedor-acciones
+            a(href=`/proyecto/edit/${proyecto.dataValues.id}` class="boton") Editar 
+            a( id="eliminarBtn" class="boton eliminar" href=`/proyecto/eliminar/${proyecto.dataValues.id}`) Eliminar

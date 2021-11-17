@@ -1,0 +1,31 @@
+{
+	"name": "uptask2",
+	"version": "1.0.0",
+	"description": "node express pug mysql",
+	"main": "server.js",
+	"scripts": {
+		"dev": "nodemon ./server.js",
+		"start": "node ./server.js"
+	},
+	"keywords": [ "node", "MVC" ],
+	"author": "jengine",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.24.0",
+		"bcrypt-nodejs": "0.0.3",
+		"connect-flash": "^0.1.1",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2",
+		"express-validator": "^6.13.0",
+		"mysql2": "^2.3.3-rc.0",
+		"passport": "^0.5.0",
+		"passport-local": "^1.0.0",
+		"pug": "^3.0.2",
+		"sequelize": "^6.9.0",
+		"shortid": "^2.2.16",
+		"slug": "^5.1.0"
+	}
+}
